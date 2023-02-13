@@ -91,6 +91,12 @@ public class WikiFileBuilder {
 		builder.end();
 	}
 	
+	public void table(Consumer<WikiTableBuilder> consumer) {
+		WikiTableBuilder builder = new WikiTableBuilder(this);
+		consumer.accept(builder);
+		builder.end();
+	}
+	
 	public void appendLines(List<String> lines, boolean removeLineEnd) {
 		if (removeLineEnd && !this.lines.isEmpty()) {
 			String line = this.lines.get(this.getCurrentLine());
@@ -99,12 +105,6 @@ public class WikiFileBuilder {
 			}
 		}
 		this.lines.addAll(lines);
-	}
-	
-	public void table(Consumer<WikiTableBuilder> consumer) {
-		WikiTableBuilder builder = new WikiTableBuilder(this);
-		consumer.accept(builder);
-		builder.end();
 	}
 	
 	public void print() {

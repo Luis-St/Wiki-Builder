@@ -58,13 +58,6 @@ public abstract class AbstractWikiBuilder<T extends AbstractWikiBuilder<T>> impl
 		return "";
 	}
 	
-	protected String excludeSpecialCharacters(String string) {
-		if (string == null) {
-			return "";
-		}
-		return string.replace("#", "\\#").replace("*", "\\*").replace("_", "\\_").replace("~", "\\~").replace("`", "\\`").replace(">", "\\>").replace("-", "\\-");
-	}
-	
 	@SuppressWarnings("unchecked")
 	protected T append(String string, boolean space) {
 		if (this.isEnd()) {
@@ -90,22 +83,22 @@ public abstract class AbstractWikiBuilder<T extends AbstractWikiBuilder<T>> impl
 	
 	@Override
 	public T append(String string) {
-		return this.append(this.excludeSpecialCharacters(string), true);
+		return this.append(string, true);
 	}
 	
 	@Override
 	public T append(Object object) {
-		return this.append(this.excludeSpecialCharacters(object.toString()), true);
+		return this.append(object.toString(), true);
 	}
 	
 	@Override
 	public T appendFormatted(String string, WikiFormat format) {
-		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(this.excludeSpecialCharacters(string)), true);
+		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(string), true);
 	}
 	
 	@Override
 	public T appendFormatted(Object object, WikiFormat format) {
-		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(this.excludeSpecialCharacters(object.toString())), true);
+		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(object.toString()), true);
 	}
 	
 	@Override

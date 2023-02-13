@@ -43,19 +43,19 @@ public class WikiTableBuilder extends AbstractWikiBuilder<WikiTableBuilder> {
 	}
 	
 	public WikiTableBuilder append(String string, WikiAlignment alignment) {
-		return this.append(this.excludeSpecialCharacters(string), true, alignment);
+		return this.append(string, true, alignment);
 	}
 	
 	public WikiTableBuilder append(Object object, WikiAlignment alignment) {
-		return this.append(this.excludeSpecialCharacters(object.toString()), alignment);
+		return this.append(object.toString(), alignment);
 	}
 	
 	public WikiTableBuilder appendFormatted(String string, WikiFormat format, WikiAlignment alignment) {
-		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(this.excludeSpecialCharacters(string)), true, alignment);
+		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(string), true, alignment);
 	}
 	
 	public WikiTableBuilder appendFormatted(Object object, WikiFormat format, WikiAlignment alignment) {
-		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(this.excludeSpecialCharacters(object.toString())), true, alignment);
+		return this.append(Objects.requireNonNull(format, "WikiFormat must not be null").formate(object.toString()), true, alignment);
 	}
 	
 	@Override
@@ -68,7 +68,7 @@ public class WikiTableBuilder extends AbstractWikiBuilder<WikiTableBuilder> {
 		for (String value : this.table.getColumn(column)) {
 			size = Math.max(size, value.length());
 		}
-		return size;
+		return Math.max(size, 3);
 	}
 	
 	private String centerString(String string, int size) {
@@ -77,9 +77,9 @@ public class WikiTableBuilder extends AbstractWikiBuilder<WikiTableBuilder> {
 		}
 		int remaining = size - string.length();
 		if (remaining % 2 == 0) {
-			return String.format("%" + (remaining / 2) + "s%s%" + (remaining / 2) + "s", "", string, "");
+			return " ".repeat(remaining / 2) + string + " ".repeat(remaining / 2);
 		} else {
-			return String.format("%" + (remaining / 2) + "s%s%" + (remaining / 2 + 1) + "s", "", string, "");
+			return " ".repeat(remaining / 2) + string + " ".repeat((remaining / 2) + 1);
 		}
 	}
 	
