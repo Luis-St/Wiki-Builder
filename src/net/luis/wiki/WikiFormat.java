@@ -12,7 +12,7 @@ public enum WikiFormat {
 	private final String prefix;
 	private final String suffix;
 	
-	private WikiFormat(String prefix, String suffix) {
+	WikiFormat(String prefix, String suffix) {
 		this.prefix = prefix;
 		this.suffix = suffix;
 	}

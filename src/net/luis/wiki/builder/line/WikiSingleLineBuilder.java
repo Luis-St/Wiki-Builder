@@ -1,9 +1,9 @@
-package net.luis.wiki.builder;
+package net.luis.wiki.builder.line;
+
+import net.luis.wiki.file.WikiFileBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import net.luis.wiki.file.WikiFileBuilder;
 
 public class WikiSingleLineBuilder extends AbstractWikiLineBuilder<WikiSingleLineBuilder> {
 	

@@ -1,10 +1,10 @@
 package net.luis.wiki.builder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.luis.wiki.WikiList;
 import net.luis.wiki.file.WikiFileBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WikiListBuilder extends AbstractWikiBuilder<WikiListBuilder> {
 	
@@ -19,7 +19,7 @@ public class WikiListBuilder extends AbstractWikiBuilder<WikiListBuilder> {
 		return switch (this.list) {
 			case NUMBER -> {
 				yield lineNumber + ". ";
-			} 
+			}
 			case POINT -> {
 				yield "- ";
 			}

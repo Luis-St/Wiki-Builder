@@ -1,9 +1,9 @@
 package net.luis.wiki.builder;
 
+import net.luis.wiki.file.WikiFileBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.luis.wiki.file.WikiFileBuilder;
 
 public class WikiHeaderBuilder extends AbstractWikiBuilder<WikiHeaderBuilder> {
 	
@@ -19,11 +19,7 @@ public class WikiHeaderBuilder extends AbstractWikiBuilder<WikiHeaderBuilder> {
 	
 	@Override
 	protected String getLinePrefix() {
-		String prefix = "";
-		for (int i = 0; i < this.header; i++) {
-			prefix += "#";
-		}
-		return prefix + " ";
+		return "#".repeat(Math.max(0, this.header)) + " ";
 	}
 	
 	@Override

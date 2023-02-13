@@ -12,6 +12,10 @@ public interface WikiBuilder<T extends WikiBuilder<T>> {
 	
 	T appendFormatted(Object object, WikiFormat format);
 	
+	void endLine();
+	
 	void end();
+	
+	boolean isEnd();
 	
 }

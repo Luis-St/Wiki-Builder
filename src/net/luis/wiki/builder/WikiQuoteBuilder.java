@@ -1,12 +1,12 @@
 package net.luis.wiki.builder;
 
+import net.luis.wiki.file.WikiFileBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import net.luis.wiki.file.WikiFileBuilder;
-
 public class WikiQuoteBuilder extends AbstractWikiBuilder<WikiQuoteBuilder> {
-
+	
 	public WikiQuoteBuilder(WikiFileBuilder fileBuilder) {
 		super(fileBuilder);
 	}
